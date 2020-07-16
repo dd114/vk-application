@@ -11,7 +11,6 @@ import {DemoComponent} from "./test";
 const testtt = DemoComponent
 const osName = platform();
 const Pers = (props) => (
-    <View>
         <Panel id={props.id}>
             <PanelHeader
                 left={<PanelHeaderButton onClick={props.go} data-to="home">
@@ -20,9 +19,9 @@ const Pers = (props) => (
             >
                 not a Persik
             </PanelHeader>
+            {DemoComponent()}
         </Panel>
-        {DemoComponent}
-    </View>
+
 );
 // <Input type="text"/>
 

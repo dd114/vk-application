@@ -1,7 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import useAutoSuggest from 'react-use-autosuggest';
 import {useMemo} from "react";
-import {Input, Panel, View} from "@vkontakte/vkui";
+import {Input, Panel, Textarea, View} from "@vkontakte/vkui";
 
 
 const todos = [
@@ -19,13 +19,10 @@ const todos = [
     }
 ];
 //траблы здесь
+//todo
 export const DemoComponent = ()=>{
-    const [titleInput, setTitleInput] = useState(' ');
-    const [descriptionInput, setDescriptionInput] = useState(' ');
-    //  Important to map using useMemo so that
-    //  useAutoSuggest does not re-process the
-    //  data every time the component updates,
-    //  as Array.map returns a new reference.
+    const [titleInput, setTitleInput] = useState('');
+    const [descriptionInput, setDescriptionInput] = useState('');
     const previousTitles = useMemo(() => {
         return todos.map(({title}) => title);
     }, [todos]);
@@ -49,18 +46,18 @@ export const DemoComponent = ()=>{
     return (
         <Panel id="demoComponent">
             <Input
-                type=" text"
+                type="text"
                 value={titleInput}
                 name=" title"
                 onChange={handleTitleInput}
             />
-            < textarea
+            < Textarea
                 onChange={handleDescriptionInput}
                 name="description"
             >
         {descriptionInput}
-      </textarea>
-
+            </Textarea>
+            {titleSuggestions}
         </Panel>
     )
 };
